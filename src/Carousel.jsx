@@ -10,6 +10,7 @@ class Carousel extends Component {
   };
 
   handleChangeIndex(index) {
+    console.log(this);
     this.setState({ active: index });
   }
 
@@ -24,7 +25,9 @@ class Carousel extends Component {
           {images.map((photo, index) => (
             //eslint-disable-next-line
             <img
-              onClick={this.handleChangeIndex.bind(this, [index])}
+              onClick={() => {
+                this.handleChangeIndex(index);
+              }}
               alt="animal-thumbnail"
               key={photo}
               src={photo}
