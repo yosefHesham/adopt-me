@@ -20,22 +20,33 @@ const queryClient = new QueryClient({
 const App = () => {
   const adoptedPet = useState(null);
   return (
-    <BrowserRouter>
-      <QueryClientProvider client={queryClient}>
-        <AdoptedPetContext.Provider value={adoptedPet}>
-          <header>
-            <Link to={"/"}>
-              <h1> Adopt Me !</h1>
-            </Link>
-          </header>
-          <Routes>
-            <Route path="/details/:id" element={<Details />}></Route>
-            <Route path="/" element={<SearchParams />}></Route>
-          </Routes>
-        </AdoptedPetContext.Provider>
-      </QueryClientProvider>
-    </BrowserRouter>
-  );
+   <div
+      className="m-0 p-0"
+      style={{
+        background:
+          "url(https://pets-images.dev-apis.com/pets/wallpaperA.jpg )",
+      }}
+    >
+      <BrowserRouter>
+        <QueryClientProvider client={queryClient}>
+          <AdoptedPetContext.Provider value={adoptedPet}>
+            <header className="mb-10 w-full bg-gradient-to-b from-yellow-400 to-red-500  p-7  text-center">
+              <Link
+                to={"/"}
+                className="text-6xl text-white hover:text-gray-200"
+              >
+                <h1> Adopt Me !</h1>
+              </Link>
+            </header>
+            <Routes>
+              <Route path="/details/:id" element={<Details />}></Route>
+              <Route path="/" element={<SearchParams />}></Route>
+            </Routes>
+          </AdoptedPetContext.Provider>
+        </QueryClientProvider>
+      </BrowserRouter>
+    </div>
+
 };
 const container = document.getElementById("root");
 const root = createRoot(container);

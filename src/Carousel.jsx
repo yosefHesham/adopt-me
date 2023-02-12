@@ -31,7 +31,7 @@ class Carousel extends Component {
               alt="animal-thumbnail"
               key={photo}
               src={photo}
-              className={index === active ? "active" : ""}
+              className={index === active ? "active" : " "}
             />
           ))}
         </section>
