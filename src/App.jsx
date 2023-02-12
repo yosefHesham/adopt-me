@@ -20,7 +20,7 @@ const queryClient = new QueryClient({
 const App = () => {
   const adoptedPet = useState(null);
   return (
-    <div
+   <div
       className="m-0 p-0"
       style={{
         background:
@@ -46,7 +46,7 @@ const App = () => {
         </QueryClientProvider>
       </BrowserRouter>
     </div>
-  );
+
 };
 const container = document.getElementById("root");
 const root = createRoot(container);
