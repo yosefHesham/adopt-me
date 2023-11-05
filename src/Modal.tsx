@@ -13,11 +13,9 @@ const Modal = ({ children }: { children: ReactElement }) => {
 
     modalRoot.appendChild(elRef.current);
 
-
     return () => {
-      if (elRef.current)
-        modalRoot.removeChild(elRef.current);
-    }
+      if (elRef.current) modalRoot.removeChild(elRef.current);
+    };
   }, []);
 
   return createPortal(<div>{children}</div>, elRef.current);

@@ -11,19 +11,15 @@ export interface Pet {
   state: string;
 }
 
-
 export interface PetAPIResponse {
-  numberOfResults:number;
-  startIndex:number;
-  endIndex:number;
-  hasNext:boolean;
-  pets:Pet[]
-
+  numberOfResults: number;
+  startIndex: number;
+  endIndex: number;
+  hasNext: boolean;
+  pets: Pet[];
 }
 
 export interface BreedListAPIResponse {
-  animal:Animal;
-  breeds:string[];
-  
-
+  animal: Animal;
+  breeds: string[];
 }

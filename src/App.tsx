@@ -48,7 +48,7 @@ const App = () => {
 
 const container = document.querySelector("#root");
 if (!container) {
-  throw new Error("No container found")
+  throw new Error("No container found");
 }
 const root = createRoot(container);
 

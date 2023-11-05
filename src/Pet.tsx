@@ -11,7 +11,6 @@ export interface IPet {
   location: string;
 }
 
-
 const Pet = (props: IPet) => {
   const { id, name, animal, description, breed, images, location } = props;
   let hero = "http://pets-images.dev-apis.com/pets/none.jpg";

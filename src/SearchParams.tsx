@@ -31,7 +31,7 @@ const SearchParams = () => {
           const formData = new FormData(e.currentTarget);
           const obj = {
             location: formData.get("location")?.toString() ?? "",
-            animal: formData.get("animal")?.toString() as Animal ?? "",
+            animal: (formData.get("animal")?.toString() as Animal) ?? "",
             breed: formData.get("breed")?.toString() ?? "",
           };
           setRequestParams(obj);

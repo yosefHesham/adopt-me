@@ -1,9 +1,8 @@
 import { Component } from "react";
 
-
 type Props = {
-  images: string[]
-}
+  images: string[];
+};
 class Carousel extends Component<Props> {
   state: { active: number } = {
     active: 0,

@@ -13,7 +13,7 @@ const Details = () => {
   const { id } = useParams();
 
   if (!id) {
-    throw new Error("ID is missing!")
+    throw new Error("ID is missing!");
   }
   const results = useQuery(["details", id], fetchPet);
   const [showModal, setShowModal] = useState(false);
@@ -34,7 +34,7 @@ const Details = () => {
 
   const pet = results?.data?.pets[0];
   if (!pet) {
-    throw new Error("Not Pet Lol!")
+    throw new Error("Not Pet Lol!");
   }
 
   return (
@@ -73,7 +73,7 @@ const Details = () => {
 function DetailsErrorBoundary() {
   return (
     <ErrorBoundary>
-      <Details ></Details>
+      <Details></Details>
     </ErrorBoundary>
   );
 }
