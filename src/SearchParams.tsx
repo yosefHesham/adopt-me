@@ -4,16 +4,17 @@ import { useContext } from "react";
 import Results from "../Results";
 import AdoptedPetContext from "./AdoptedPetContext";
 import fetchSearch from "./fetchSearch";
+import { Animal } from "./ResponsesTypes";
 import useBreedList from "./useBreedList";
 
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 const SearchParams = () => {
   const [requestParams, setRequestParams] = useState({
-    animal: "",
+    animal: "" as Animal,
     breed: "",
     location: "",
   });
-  const [animal, setAnimal] = useState("");
+  const [animal, setAnimal] = useState("" as Animal);
   const [breeds] = useBreedList(animal);
 
   const results = useQuery(["search", requestParams], fetchSearch);
@@ -27,11 +28,11 @@ const SearchParams = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          const formData = new FormData(e.target);
+          const formData = new FormData(e.currentTarget);
           const obj = {
-            location: formData.get("location"),
-            animal: formData.get("animal"),
-            breed: formData.get("breed"),
+            location: formData.get("location")?.toString() ?? "",
+            animal: formData.get("animal")?.toString() as Animal ?? "",
+            breed: formData.get("breed")?.toString() ?? "",
           };
           setRequestParams(obj);
         }}
@@ -48,7 +49,7 @@ const SearchParams = () => {
           value={animal}
           name="animal"
           onChange={(e) => {
-            setAnimal(e.target.value);
+            setAnimal(e.target.value as Animal);
           }}
         >
           {ANIMALS.map((animal) => (
@@ -57,7 +58,7 @@ const SearchParams = () => {
         </select>
         <label htmlFor="breed">Breed</label>
         <select name="breed" disabled={!breeds.length}>
-          {breeds.map((animal) => (
+          {(breeds as string[])?.map((animal: string) => (
             <option key={animal}> {animal}</option>
           ))}
         </select>

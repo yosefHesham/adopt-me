@@ -1,7 +1,11 @@
 import { Component } from "react";
 
-class Carousel extends Component {
-  state = {
+
+type Props = {
+  images: string[]
+}
+class Carousel extends Component<Props> {
+  state: { active: number } = {
     active: 0,
   };
 
@@ -9,7 +13,7 @@ class Carousel extends Component {
     images: ["http://pets-images.dev-apis.com/pets/none.jpg"],
   };
 
-  handleIndexClick = (index) => {
+  handleIndexClick = (index: number) => {
     this.setState({ active: index });
   };
   render() {
@@ -31,7 +35,7 @@ class Carousel extends Component {
                   this.handleIndexClick(index);
                 }}
                 alt="animal thumbnail"
-                className={index === active && "active"}
+                className={index === active ? "active" : ""}
               ></img>
             );
           })}

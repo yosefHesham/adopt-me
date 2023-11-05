@@ -7,9 +7,14 @@ import fetchPet from "./fetchPet";
 import Modal from "./Modal";
 import { useContext } from "react";
 import AdoptedPetContext from "./AdoptedPetContext";
+import { PetAPIResponse } from "./ResponsesTypes";
 
 const Details = () => {
   const { id } = useParams();
+
+  if (!id) {
+    throw new Error("ID is missing!")
+  }
   const results = useQuery(["details", id], fetchPet);
   const [showModal, setShowModal] = useState(false);
 
@@ -27,7 +32,10 @@ const Details = () => {
     );
   }
 
-  const pet = results.data.pets[0];
+  const pet = results?.data?.pets[0];
+  if (!pet) {
+    throw new Error("Not Pet Lol!")
+  }
 
   return (
     <div className="details">
@@ -62,10 +70,10 @@ const Details = () => {
   );
 };
 
-function DetailsErrorBoundary(props) {
+function DetailsErrorBoundary() {
   return (
     <ErrorBoundary>
-      <Details {...props}></Details>
+      <Details ></Details>
     </ErrorBoundary>
   );
 }
