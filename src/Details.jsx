@@ -1,33 +1,30 @@
-import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundry";
-import fetchPet from "./fetchPet";
 import Modal from "./Modal";
-import { useContext } from "react";
-import AdoptedPetContext from "./AdoptedPetContext";
+import { useDispatch } from "react-redux";
+import { adopt } from "./adoptedPetSlice";
+import { useGetPetQuery } from "./petService";
 
 const Details = () => {
   const { id } = useParams();
-  const results = useQuery(["details", id], fetchPet);
   const [showModal, setShowModal] = useState(false);
+  const dispatch = useDispatch();
 
   // eslint-disable-next-line no-unused-vars
-  const [_, setAdoptedPet] = useContext(AdoptedPetContext);
 
-  console.log(setAdoptedPet);
   const navigate = useNavigate();
 
-  if (results.isLoading) {
+  const { isLoading, data: pet } = useGetPetQuery(id);
+
+  if (isLoading) {
     return (
       <div className="loading-pane">
         <div className="loader">🐚</div>
       </div>
     );
   }
-
-  const pet = results.data.pets[0];
 
   return (
     <div className="details">
@@ -47,7 +44,7 @@ const Details = () => {
             <div className="buttons">
               <button
                 onClick={() => {
-                  setAdoptedPet(pet);
+                  dispatch(adopt(pet));
                   navigate("/");
                 }}
               >
