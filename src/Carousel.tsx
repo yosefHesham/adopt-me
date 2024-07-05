@@ -9,7 +9,7 @@ class Carousel extends Component<Props> {
   };
 
   static defaultProps = {
-    images: ["http://pets-images.dev-apis.com/pets/none.jpg"],
+    images: ["https://pets-images.dev-apis.com/pets/none.jpg"],
   };
 
   handleIndexClick = (index: number) => {

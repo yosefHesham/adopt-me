@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Animal, Pet } from "./ResponsesTypes";
+import { Animal, PetResponse } from "./ResponsesTypes";
 
 export interface IPet {
   id: number;

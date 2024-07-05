@@ -230,6 +230,7 @@ header {
   z-index: 10;
   display: flex;
   justify-content: center;
+  width: 100%;
   align-items: center;
 }
 
@@ -239,10 +240,10 @@ header {
 
 #modal > div {
   background-color: white;
-  max-width: 500px;
   padding: 15px;
+  width: 60%;
   text-align: center;
-  border-radius: 30px;
+  border-radius: 15px;
   background: #faeff0;
 }
 

@@ -1,5 +1,6 @@
 import Pet from "./src/Pet";
-import { Pet as PetType } from "./src/ResponsesTypes"
+import { PetResponse as PetType } from "./src/ResponsesTypes";
+
 const Results = ({ pets }: { pets: PetType[] }) => {
   return (
     <div className="search">
